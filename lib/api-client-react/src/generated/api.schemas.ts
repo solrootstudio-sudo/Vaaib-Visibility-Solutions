@@ -8,3 +8,33 @@
 export interface HealthStatus {
   status: string;
 }
+
+export type ContactSubmissionPackageInterest =
+  (typeof ContactSubmissionPackageInterest)[keyof typeof ContactSubmissionPackageInterest];
+
+export const ContactSubmissionPackageInterest = {
+  starter: "starter",
+  pro: "pro",
+  authority: "authority",
+  general: "general",
+} as const;
+
+export interface ContactSubmission {
+  /** @minLength 2 */
+  name: string;
+  email: string;
+  /** @minLength 2 */
+  businessName: string;
+  /** @minLength 10 */
+  message: string;
+  packageInterest?: ContactSubmissionPackageInterest;
+}
+
+export interface ContactSubmissionResponse {
+  id: number;
+  message: string;
+}
+
+export interface ErrorResponse {
+  error: string;
+}

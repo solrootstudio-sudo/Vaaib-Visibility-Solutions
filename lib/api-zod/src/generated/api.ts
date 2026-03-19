@@ -14,3 +14,25 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * Stores a contact form submission from the landing page
+ * @summary Submit contact form
+ */
+export const submitContactBodyNameMin = 2;
+
+export const submitContactBodyBusinessNameMin = 2;
+
+export const submitContactBodyMessageMin = 10;
+
+export const submitContactBodyPackageInterestDefault = `general`;
+
+export const SubmitContactBody = zod.object({
+  name: zod.string().min(submitContactBodyNameMin),
+  email: zod.string().email(),
+  businessName: zod.string().min(submitContactBodyBusinessNameMin),
+  message: zod.string().min(submitContactBodyMessageMin),
+  packageInterest: zod
+    .enum(["starter", "pro", "authority", "general"])
+    .default(submitContactBodyPackageInterestDefault),
+});
