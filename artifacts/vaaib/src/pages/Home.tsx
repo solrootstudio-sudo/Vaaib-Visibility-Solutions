@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ChatBot from "@/components/ChatBot";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -396,6 +397,8 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      <ChatBot />
 
       {/* Footer */}
       <footer className="border-t border-white/10 bg-black pt-16 pb-8 px-4">
