@@ -171,7 +171,7 @@ export default function Home() {
             >
               {[
                 { icon: Search,    stat: "67%",    text: "of consumers now use AI chat tools for product and service discovery instead of traditional search." },
-                { icon: Clock,     stat: "6+ Mos", text: "is how long traditional SEO takes to show results. AI indexing happens in days or hours." },
+                { icon: Clock,     stat: "6+ Months", text: "is how long traditional SEO takes to show results. AI indexing happens in days or hours." },
                 { icon: TrendingUp, stat: "90%",   text: "of search decisions will be driven by AI-powered answers within the next 24 months." }
               ].map((item, i) => (
                 <motion.div key={i} variants={fadeUp} className="glass-panel p-8 rounded-2xl hover:border-primary/30 transition-colors duration-500 group">
