@@ -16,7 +16,6 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
-  const [started, setStarted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -26,17 +25,18 @@ export default function ChatBot() {
     }
   }, [messages, streaming]);
 
+  // Pre-initialize conversation on mount so it's ready when the user opens chat
   useEffect(() => {
-    if (open && !started) {
-      initConversation();
-    }
+    initConversation();
+  }, []);
+
+  useEffect(() => {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 300);
     }
   }, [open]);
 
   const initConversation = async () => {
-    setStarted(true);
     try {
       const res = await fetch(`${BASE_URL}/api/openai/conversations`, {
         method: "POST",
