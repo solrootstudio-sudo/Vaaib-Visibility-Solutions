@@ -1,0 +1,14 @@
+packages:
+  "framer-motion": "For smooth scroll reveals and page animations to make it feel premium"
+  "react-hook-form": "For form state management in the contact section"
+  "@hookform/resolvers": "For Zod validation integration with react-hook-form"
+  "zod": "For contact form validation schema"
+
+images:
+  - path: "artifacts/vaaib/public/images/hero-glow.png"
+    description: "Abstract, very subtle, dark minimal geometric background with a soft deep indigo and electric blue ambient glow, representing AI data nodes, high end professional corporate style, mostly black/dark charcoal space"
+    aspect_ratio: "16:9"
+
+notes:
+  - Frontend-only application (landing page).
+  - Contact form submissions are simulated with a success toast.

@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "VAAIB - AI-Optimized Visibility"
+version = "1.0.0"
+id = "artifacts/vaaib"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18679
+
+[services.development]
+run = "pnpm --filter @workspace/vaaib run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/vaaib", "run", "build" ]
+publicDir = "artifacts/vaaib/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18679"
+BASE_PATH = "/"
