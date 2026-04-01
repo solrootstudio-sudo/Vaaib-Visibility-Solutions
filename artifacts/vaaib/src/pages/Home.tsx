@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ChatBot from "@/components/ChatBot";
+import ProjectCard from "@/components/ProjectCard";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -11,7 +12,8 @@ import {
   Search,
   Clock,
   TrendingUp,
-  Globe
+  Globe,
+  Bot
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,8 +52,42 @@ const staggerContainer = {
   visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
 };
 
+const projects = [
+  {
+    mockupColor: "linear-gradient(135deg, #1a1040 0%, #2d1b69 100%)",
+    mockupAccent: "#7c3aed",
+    tag: "Website + AI Booking",
+    title: "Saffron Kitchen",
+    description: "A premium restaurant site with AI-powered reservation assistant that reduced no-shows by answering guest queries around the clock.",
+    testimonial: "VAAIB completely changed how we handle bookings. Our online enquiries doubled in the first month.",
+    clientName: "Amara Dube",
+    clientBusiness: "Saffron Kitchen, Sandton",
+  },
+  {
+    mockupColor: "linear-gradient(135deg, #0a1628 0%, #0f3460 100%)",
+    mockupAccent: "#3b82f6",
+    tag: "AI Legal Assistant",
+    title: "LegalQuick SA",
+    description: "Multi-page legal services platform with a custom AI consultant that pre-qualifies leads and explains services in plain language 24/7.",
+    testimonial: "Our AI assistant handles the first consultation so our lawyers only speak to serious, qualified clients.",
+    clientName: "Sipho Nkosi",
+    clientBusiness: "LegalQuick SA, Cape Town",
+  },
+  {
+    mockupColor: "linear-gradient(135deg, #0d2818 0%, #14532d 100%)",
+    mockupAccent: "#22c55e",
+    tag: "E-commerce + AI Discovery",
+    title: "Mzanzi Craft Market",
+    description: "Full e-commerce presence optimised so AI tools like ChatGPT recommend the marketplace when users search for authentic South African crafts.",
+    testimonial: "Customers tell us they found us through ChatGPT. We never even imagined that was possible before VAAIB.",
+    clientName: "Lerato Molefe",
+    clientBusiness: "Mzanzi Craft Market, Johannesburg",
+  },
+];
+
 export default function Home() {
   const { toast } = useToast();
+  const [chatOpen, setChatOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<"starter" | "pro" | "authority" | "general">("general");
 
   const { register, handleSubmit, reset, setValue, formState: { errors, isSubmitting } } = useForm<ContactFormData>({
@@ -101,8 +137,8 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground overflow-hidden font-sans">
       {/* Background Effects */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full mix-blend-screen opacity-50" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full mix-blend-screen opacity-30" />
+        <div className="animate-blob-a absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full mix-blend-screen opacity-50" />
+        <div className="animate-blob-b absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full mix-blend-screen opacity-30" />
         <div className="absolute inset-0 bg-[url('/images/hero-glow.png')] bg-cover bg-center opacity-30 mix-blend-screen" />
       </div>
 
@@ -118,6 +154,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
             <button onClick={() => scrollTo("problem")} className="hover:text-foreground transition-colors">The Shift</button>
             <button onClick={() => scrollTo("solution")} className="hover:text-foreground transition-colors">Platform</button>
+            <button onClick={() => scrollTo("projects")} className="hover:text-foreground transition-colors">Work</button>
             <button onClick={() => scrollTo("pricing")} className="hover:text-foreground transition-colors">Pricing</button>
           </div>
           <Button onClick={() => scrollTo("contact")} className="rounded-full px-6">
@@ -155,7 +192,16 @@ export default function Home() {
                   Get AI Visibility Now
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full text-base" onClick={() => scrollTo("problem")}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto rounded-full text-base border-primary/40 text-primary hover:bg-primary/10 hover:text-primary hover:border-primary gap-2 group"
+                  onClick={() => setChatOpen(true)}
+                >
+                  <Bot className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  Chat with VAI
+                </Button>
+                <Button size="lg" variant="ghost" className="w-full sm:w-auto rounded-full text-base text-muted-foreground" onClick={() => scrollTo("problem")}>
                   See How It Works
                 </Button>
               </motion.div>
@@ -215,6 +261,37 @@ export default function Home() {
                     <h3 className="text-xl font-display font-semibold mb-3">{feature.title}</h3>
                     <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
                   </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-32 px-4 relative">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-primary text-sm font-semibold uppercase tracking-widest mb-4">
+                Selected Work
+              </motion.p>
+              <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-4xl md:text-5xl font-display font-bold mb-6">
+                Projects & Results
+              </motion.h2>
+              <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                A look at some of the platforms and solutions we've built for South African businesses.
+              </motion.p>
+            </div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
+              {projects.map((project, i) => (
+                <motion.div key={i} variants={fadeUp}>
+                  <ProjectCard {...project} />
                 </motion.div>
               ))}
             </motion.div>
@@ -398,7 +475,7 @@ export default function Home() {
         </section>
       </main>
 
-      <ChatBot />
+      <ChatBot open={chatOpen} onOpenChange={setChatOpen} />
 
       {/* Footer */}
       <footer className="border-t border-white/10 bg-black pt-16 pb-8 px-4">

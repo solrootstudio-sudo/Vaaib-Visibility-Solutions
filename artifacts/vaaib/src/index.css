@@ -74,3 +74,24 @@
     @apply bg-white/5 backdrop-blur-xl border border-white/10;
   }
 }
+
+/* Subtle background blob animations */
+@keyframes blob-float-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(4%, 7%) scale(1.08); }
+  66%       { transform: translate(-3%, -4%) scale(0.95); }
+}
+
+@keyframes blob-float-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-5%, -8%) scale(0.93); }
+  66%       { transform: translate(3%, 5%) scale(1.07); }
+}
+
+.animate-blob-a {
+  animation: blob-float-a 20s ease-in-out infinite;
+}
+
+.animate-blob-b {
+  animation: blob-float-b 26s ease-in-out infinite;
+}

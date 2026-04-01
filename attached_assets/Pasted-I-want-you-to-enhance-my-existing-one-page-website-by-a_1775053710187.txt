@@ -1,0 +1,107 @@
+I want you to enhance my existing one-page website by adding three new features while keeping full design consistency with the current VAAIB (Vibe) branding, layout, spacing, and styling. Do NOT break or redesign existing sections.
+
+-----------------------------------
+1. PROJECTS / CREDIBILITY SECTION
+-----------------------------------
+
+Add a new section that builds trust and showcases previous work.
+
+SECTION DETAILS:
+- Title: “Projects & Results” (or “Selected Work”)
+- Optional subtitle: “A look at some of the platforms and solutions we’ve built”
+
+LAYOUT:
+- Full-width section
+- Consistent vertical spacing with the rest of the site
+- Responsive design
+
+PROJECT CARDS:
+- Display 3–4 placeholder project cards (for now)
+- Use either:
+  - Horizontal scroll (preferred for modern feel), OR
+  - Responsive grid (2–3 columns desktop, 1 column mobile)
+
+Each card must include:
+- Image (placeholder screenshot)
+- Project title
+- Short description (1–2 lines)
+- Optional tag (e.g. “Website”, “AI Assistant”, “Booking System”)
+
+TESTIMONIAL:
+- Include a short testimonial per project:
+  Example:
+  “Working with VAAIB completely improved how we handle client enquiries.”
+- Include name + optional business
+
+DESIGN:
+- Match existing Tailwind styles exactly
+- Use same colors (primary, gradients, shadows)
+- Rounded corners, soft shadows
+- Add subtle hover effect (scale or shadow)
+
+OPTIONAL:
+- Add subtle fade-in or slide-up animation on scroll
+
+-----------------------------------
+2. AI CHAT CTA BUTTON (“VAI”)
+-----------------------------------
+
+Add a prominent call-to-action button across the site.
+
+BUTTON REQUIREMENTS:
+- Text options (choose best fit):
+  “Chat with VAI” or “Consult with VAI”
+- Should be clearly visible and slightly more prominent than other buttons
+
+PLACEMENT:
+- Add in:
+  - Hero section (primary CTA)
+  - Optional: sticky/floating button bottom-right corner
+
+FUNCTION:
+- For now, button can:
+  - Open a modal OR
+  - Scroll to a placeholder chat section
+
+CHAT CONTEXT (IMPORTANT):
+- This represents an AI assistant named “VAI”
+- VAI should be positioned as:
+  - Friendly
+  - Helpful
+  - Explaining services in simple, non-technical, layman’s terms
+- Add placeholder chat UI or container (simple design is fine)
+
+-----------------------------------
+3. SUBTLE BACKGROUND ANIMATION
+-----------------------------------
+
+Enhance the visual feel of the site with a very subtle animated background.
+
+REQUIREMENTS:
+- Keep it minimal and professional (NOT distracting)
+- Examples:
+  - Slow gradient movement
+  - Soft moving blobs
+  - Subtle texture/parallax shift
+
+CONSTRAINTS:
+- Must NOT affect readability
+- Must NOT slow performance significantly
+- Must NOT interfere with existing layout
+
+-----------------------------------
+GENERAL RULES
+-----------------------------------
+
+- Do NOT change existing sections or structure
+- Maintain full design consistency (spacing, typography, color palette)
+- Use clean, modular code
+- If using React:
+  - Create reusable components (e.g. ProjectCard, ChatButton)
+- Ensure full responsiveness (mobile + desktop)
+
+-----------------------------------
+OUTPUT
+-----------------------------------
+
+Return clean, production-ready code that integrates seamlessly into the existing project.

@@ -10,8 +10,18 @@ interface Message {
   content: string;
 }
 
-export default function ChatBot() {
-  const [open, setOpen] = useState(false);
+interface ChatBotProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+export default function ChatBot({ open: openProp, onOpenChange }: ChatBotProps = {}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = openProp !== undefined ? openProp : internalOpen;
+  const setOpen = (val: boolean) => {
+    setInternalOpen(val);
+    onOpenChange?.(val);
+  };
   const [conversationId, setConversationId] = useState<number | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
