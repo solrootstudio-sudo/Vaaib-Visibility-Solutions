@@ -1,6 +1,6 @@
 import { Router, type IRouter } from "express";
 import { db, conversations as conversationsTable, messages as messagesTable } from "@workspace/db";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { openai } from "@workspace/integrations-openai-ai-server";
 import { SendOpenaiMessageBody, CreateOpenaiConversationBody } from "@workspace/api-zod";
 
@@ -82,10 +82,14 @@ router.post("/conversations/:id/messages", async (req, res) => {
     content,
   });
 
-  const history = await db
+  const recentHistory = await db
     .select()
     .from(messagesTable)
-    .where(eq(messagesTable.conversationId, id));
+    .where(eq(messagesTable.conversationId, id))
+    .orderBy(desc(messagesTable.id))
+    .limit(12);
+
+  const history = recentHistory.reverse();
 
   const chatMessages = [
     { role: "system" as const, content: VAAIB_SYSTEM_PROMPT },
