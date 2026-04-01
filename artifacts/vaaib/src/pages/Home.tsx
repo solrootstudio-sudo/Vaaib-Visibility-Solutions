@@ -24,9 +24,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const BASE_URL = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const packageOptions = [
-  { value: "starter", label: "Starter Site — R247" },
-  { value: "pro",     label: "Pro Presence — R597" },
-  { value: "authority", label: "AI Authority — R1,197" },
+  { value: "starter", label: "Starter Site — R3,997" },
+  { value: "pro",     label: "Pro Presence — R7,497" },
+  { value: "authority", label: "AI Authority — R11,997" },
   { value: "general",  label: "Not sure yet" },
 ];
 
@@ -241,7 +241,7 @@ export default function Home() {
                   <p className="text-muted-foreground">Perfect for new businesses needing instant AI presence.</p>
                 </div>
                 <div className="mb-8">
-                  <span className="text-5xl font-display font-bold">R247</span>
+                  <span className="text-5xl font-display font-bold">R3,997</span>
                   <span className="text-muted-foreground"> / one-time</span>
                 </div>
                 <ul className="space-y-4 mb-8">
@@ -267,7 +267,7 @@ export default function Home() {
                   <p className="text-muted-foreground">Complete digital footprint optimized for AI engines.</p>
                 </div>
                 <div className="mb-8">
-                  <span className="text-5xl font-display font-bold">R597</span>
+                  <span className="text-5xl font-display font-bold">R7,497</span>
                   <span className="text-muted-foreground"> / one-time</span>
                 </div>
                 <ul className="space-y-4 mb-8">
@@ -290,7 +290,7 @@ export default function Home() {
                   <p className="text-muted-foreground">The ultimate package with integrated conversational AI.</p>
                 </div>
                 <div className="mb-8">
-                  <span className="text-5xl font-display font-bold">R1,197</span>
+                  <span className="text-5xl font-display font-bold">R11,997</span>
                   <span className="text-muted-foreground"> / one-time</span>
                 </div>
                 <ul className="space-y-4 mb-8">
